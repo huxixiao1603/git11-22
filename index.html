@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.mui={name:"张三"};//此处相当于在window下挂载了一个对象,对象中有个属性为name值为张三
+			(function($){
+				console.log("闭包函数被调用了");
+				if(!$.name){//当没有前面代码声明mui时,则mui为空,即将name赋值为李四
+					$.name="李四";
+				}
+				console.log($.name);//打印mui下name变量
+			})(window.mui=window.mui||{});//匿名函数利用闭包,进行自调用
+		</script>
+	</body>
+</html>
